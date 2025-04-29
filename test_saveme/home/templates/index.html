@@ -1,23 +1,15 @@
-{% load static %}
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <title>Formulario de Respuesta Médica</title>
+  <meta charset="UTF-8">
+  <title>Formulario Médico</title>
 </head>
 <body>
-
-    <h1>🔵 Completa tu información</h1>
-
-    <!-- Tu formulario sigue igual -->
-    <form id="formularioRespuesta" method="POST">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" id="botonEnviar">Enviar</button>
-    </form>
-
-    <!-- Aquí simplemente CARGAMOS el JavaScript al final -->
-    <script src="{% static 'home/hospitales.js' %}"></script>
-
+  <h2>Formulario de Atención</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Enviar</button>
+  </form>
 </body>
 </html>

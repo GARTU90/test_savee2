@@ -7,8 +7,7 @@ from wagtail.admin import urls as wagtailadmin_urls
 from wagtail import urls as wagtail_urls
 from wagtail.documents import urls as wagtaildocs_urls
 
-from home.views import index, procesar_formulario
-
+from home.views import procesar_datos_denue
 
 from search import views as search_views
 
@@ -18,6 +17,7 @@ urlpatterns = [
     path("documents/", include(wagtaildocs_urls)),
     path("search/", search_views.search, name="search"),
     path('', index, name='index'),
+    path('procesar_datos_denue/', procesar_datos_denue, name='procesar_datos_denue'),
 ]
 
 
