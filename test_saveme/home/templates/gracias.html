@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Gracias por tu información</title>
+</head>
+<body>
+    <h1>✅ ¡Gracias por enviar tu información!</h1>
+
+    <h2>Detalles recibidos:</h2>
+    <p><strong>Seguro:</strong> {{ nombre_seguro }}</p>
+    <p><strong>Descripción del problema:</strong> {{ descripcion }}</p>
+
+    <h3>🧠 Palabras clave detectadas:</h3>
+    <ul>
+        {% if resultados %}
+            {% for palabra, categoria in resultados %}
+                <li><strong>{{ palabra }}</strong> → {{ categoria }}</li>
+            {% endfor %}
+        {% else %}
+            <li>No se detectaron palabras clave.</li>
+        {% endif %}
+    </ul>
+
+    <h3>🏥 Hospitales encontrados:</h3>
+    <ul>
+        {% if hospitales %}
+            {% for hospital in hospitales %}
+                <li>
+                    <strong>{{ hospital.nombre }}</strong><br>
+                    {{ hospital.direccion }}<br>
+                    Latitud: {{ hospital.lat }}<br>
+                    Longitud: {{ hospital.lng }}
+                </li>
+                <br>
+            {% endfor %}
+        {% else %}
+            <li>No se encontraron hospitales.</li>
+        {% endif %}
+    </ul>
+
+    <br>
+    <a href="/">🔙 Volver al formulario</a>
+</body>
+</html>

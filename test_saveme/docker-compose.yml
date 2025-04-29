@@ -1,0 +1,29 @@
+version: '3.9'
+
+services:
+  db:
+    image: postgres:15
+    container_name: postgres_wagtail
+    restart: always
+    environment:
+      POSTGRES_DB: save_db
+      POSTGRES_USER: daniel
+      POSTGRES_PASSWORD: titanfaL1?
+    volumes:
+      - ./data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  web:
+    build: .
+    container_name: wagtail_web
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/app
+    ports:
+      - "80:8000"
+    depends_on:
+      - db
+    environment:
+      DEBUG: "1"
+    working_dir: /app
